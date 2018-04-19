@@ -1,0 +1,23 @@
+{
+  "name": "test-skill",
+  "version": "1.0.0",
+  "description": "\"# alexatestskill\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asifaltaf13/AlexaTestSkill.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asifaltaf13/AlexaTestSkill/issues"
+  },
+  "homepage": "https://github.com/asifaltaf13/AlexaTestSkill#readme",
+  "dependencies": {
+    "alexa-app": "^4.2.2"
+  },
+  "devDependencies": {}
+}
