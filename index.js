@@ -19,7 +19,7 @@ app.error = function( exception, request, response ) {
 
 app.intent('sayNumber',
   {
-    "slots":{"number":"NUMBER"}
+    "slots":{"number":"AMAZON.NUMBER"}
 	,"utterances":[ 
 		"say the number {1-100|number}",
 		"give me the number {1-100|number}",
@@ -31,5 +31,20 @@ app.intent('sayNumber',
     response.say("You asked for the number "+number);
   }
 );
+
+
+app.intent('sayTime',
+  {
+    "slots":{"time":"AMAZON.TIME"}
+	,"utterances":[ 
+		"tell me the time {time}"
+		]
+  },
+  function(request,response) {
+    var time = request.slot('time');
+    response.say("The time is "+time);
+  }
+);
+
 
 module.exports = app;
