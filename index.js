@@ -42,7 +42,20 @@ app.intent('sayTime',
   },
   function(request,response) {
     var time = request.slot('time');
-    response.say("The time is "+time);
+    response.say("The time is " + time);
+  }
+);
+
+app.intent('noteTake',
+  {
+    "slots":{"note":"AMAZON.LITERAL"}
+	,"utterances":[ 
+		"note that {note}"
+		]
+  },
+  function(request,response) {
+    var note = request.slot('note');
+    response.say("Your note said: " + note);
   }
 );
 
