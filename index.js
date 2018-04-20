@@ -48,14 +48,17 @@ app.intent('sayTime',
 
 app.intent('noteTake',
   {
-    "slots":{"note":"AMAZON.LITERAL"}
+    "slots":{"note":"AMAZON.Actor"}
 	,"utterances":[ 
+		"meeting decision {note}",
+		"take a decision {note}",
+		"write down a decision {note}",
 		"note that {note}"
 		]
   },
   function(request,response) {
     var note = request.slot('note');
-    response.say("Your note said: " + note);
+    response.say("Your note: " + note + " was created.");
   }
 );
 
