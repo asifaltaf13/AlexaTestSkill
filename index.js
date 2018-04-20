@@ -33,18 +33,4 @@ app.intent('sayNumber',
 );
 
 
-app.intent('sayTime',
-  {
-    "slots":{"time":"AMAZON.TIME"}
-	,"utterances":[ 
-		"tell me the time {time}"
-		]
-  },
-  function(request,response) {
-    var time = request.slot('time');
-    response.say("The time is "+time);
-  }
-);
-
-
 module.exports = app;
