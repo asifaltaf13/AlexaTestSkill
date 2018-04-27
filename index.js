@@ -24,6 +24,7 @@ app.error = function( exception, request, response ) {
 // TO FIND OUT WHEN THE SESSION ENDS
 app.sessionEnded(function(request, response) 
 {
+	response.say("Minute Taker is closing");
 	console.log("session ended");
 });
 
