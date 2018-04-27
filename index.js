@@ -6,7 +6,8 @@ var app = new alexa.app( 'test-skill' );
 
 
 app.launch( function( request, response ) {
-	response.say( 'Ready to take notes' ).reprompt( 'Way to go. You got it to run. Bad ass.' ).shouldEndSession( false );
+	response.say( 'Ready to take notes' ).reprompt( 'Way to go. You got it to run. Bad ass.' )
+	response.shouldEndSession(false);
 } );
 
 
@@ -32,7 +33,6 @@ app.intent('sayNumber',
   }
 );
 
-
 app.intent('sayTime',
   {
     "slots":{"time":"AMAZON.TIME"}
@@ -56,17 +56,23 @@ app.intent('noteTake',
 		"note that {note}"
 		]
   },
-  function(request,response) {
+  function(request,response) 
+  {
     var note = request.slot('note');
-    response.say("Your note: " + note + " was created.");
-	response.shouldEndSession(false);
+	if (typeof(something) != "undefined")
+	{
+		response.say("Your note: " + note + " was created.");		
+	}
+	else
+	{
+		response.say("Pardon me. I could not hear a note.");
+	}
   }
 );
 
 app.intent('endSession',
   {
-    "slots":{"note":"AMAZON.Actor"}
-	,"utterances":[ 
+    "utterances":[ 
 		"thank you",
 		"bye",
 		"bye bye",
