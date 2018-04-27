@@ -43,7 +43,7 @@ app.intent('noteTake',
   function(request,response) 
   {
     var note = request.slot('note');
-	if (typeof(something) != "undefined")
+	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");		
 	}
