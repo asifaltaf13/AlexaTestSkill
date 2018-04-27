@@ -59,6 +59,24 @@ app.intent('noteTake',
   function(request,response) {
     var note = request.slot('note');
     response.say("Your note: " + note + " was created.");
+	response.shouldEndSession(false);
+  }
+);
+
+app.intent('endSession',
+  {
+    "slots":{"note":"AMAZON.Actor"}
+	,"utterances":[ 
+		"thank you",
+		"bye",
+		"bye bye",
+		"stop minute taker"
+		]
+  },
+  function(request,response) 
+  {
+    response.say("Sure");
+	response.shouldEndSession(true);
   }
 );
 
