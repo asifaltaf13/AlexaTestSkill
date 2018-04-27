@@ -58,7 +58,8 @@ app.intent('noteTake',
 // MANUAL ENDING OF THE SESSION INTENT
 app.intent('endSession',
   {
-    "utterances":[ 
+    "slots":{"note":"AMAZON.Actor"}
+	,"utterances":[ 
 		"thank you",
 		"bye",
 		"bye bye",
