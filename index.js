@@ -5,8 +5,10 @@ var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'test-skill' );
 
 
+// THIS FUNCTION RUNS WHEN THE SKILL IS INVOKED
 app.launch( function( request, response ) {
-	response.say( 'Ready to take notes' ).reprompt( 'Way to go. You got it to run. Bad ass.' )
+	response.say( 'Ready to take notes' );	// initial response from alexa
+	response.reprompt( 'I am waiting for instructions' )	// this message is heard if alexa did not hear anything from user
 	response.shouldEndSession(false);
 } );
 
@@ -18,34 +20,16 @@ app.error = function( exception, request, response ) {
 	response.say( 'Sorry an error occured ' + error.message);
 };
 
-app.intent('sayNumber',
-  {
-    "slots":{"number":"AMAZON.NUMBER"}
-	,"utterances":[ 
-		"say the number {1-100|number}",
-		"give me the number {1-100|number}",
-		"tell me the number {1-100|number}",
-		"I want to hear you say the number {1-100|number}"]
-  },
-  function(request,response) {
-    var number = request.slot('number');
-    response.say("You asked for the number "+number);
-  }
-);
 
-app.intent('sayTime',
-  {
-    "slots":{"time":"AMAZON.TIME"}
-	,"utterances":[ 
-		"tell me the time {time}"
-		]
-  },
-  function(request,response) {
-    var time = request.slot('time');
-    response.say("The time is " + time);
-  }
-);
+// TO FIND OUT WHEN THE SESSION ENDS
+app.sessionEnded(function(request, response) 
+{
+	console.log("session ended");
+});
 
+
+
+// NOTE TAKING INTENT
 app.intent('noteTake',
   {
     "slots":{"note":"AMAZON.Actor"}
@@ -70,6 +54,8 @@ app.intent('noteTake',
   }
 );
 
+
+// MANUAL ENDING OF THE SESSION INTENT
 app.intent('endSession',
   {
     "utterances":[ 
