@@ -56,12 +56,20 @@ app.intent('noteTake',
     var note = request.slot('note');
 	if (typeof(note) != "undefined")
 	{
-		response.say("Your note: " + note + " was created.");	
+		//response.say("Your note: " + note + " was created.");	
 		
 		con.connect(function(err) 
 		{
-		  if (err) throw err;
-		  response.say("No error in connection");
+		  if (err)
+		  {
+			  //throw err;			  
+			  response.say("error in connection");			  
+		  }
+		  else
+		  {
+			response.say("No error in connection");			  
+		  }
+		 
 		  console.log("Connected!");
 		  //Insert a record in the table:
 		  var sql = "INSERT INTO t_minutes (f_title, f_note) VALUES ('Note from Alexa', 'This note was created magically')";
