@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/asifaltaf13/AlexaTestSkill#readme",
   "dependencies": {
-    "alexa-app": "^4.2.2"
+    "alexa-app": "^4.2.2",
+    "mysql": "^2.15.0"
   },
   "devDependencies": {}
 }

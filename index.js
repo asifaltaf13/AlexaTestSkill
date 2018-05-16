@@ -3,7 +3,7 @@ module.change_code = 1;
 
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'test-skill' );
-
+var mysql = require('mysql');
 
 // THIS FUNCTION RUNS WHEN THE SKILL IS INVOKED
 app.launch( function( request, response ) {
@@ -11,7 +11,6 @@ app.launch( function( request, response ) {
 	response.reprompt( 'I am waiting for instructions' )	// this message is heard if alexa did not hear anything from user
 	response.shouldEndSession(false);
 } );
-
 
 app.error = function( exception, request, response ) {
 	console.log(exception)
@@ -47,6 +46,7 @@ app.intent('noteTake',
 	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");	
+
 	}
 	else
 	{
