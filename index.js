@@ -11,7 +11,18 @@ var connection = mysql.createConnection({
   password : 'bismillah',
   database : 'asifaltaf$minutetaker'
 });
-connection.connect();
+connection.connect(function(err) 
+		{
+		  if (err) throw err;
+		  console.log("Connected!");
+		  //Insert a record in the table:
+		  var sql = "INSERT INTO t_minutes (f_title, f_note) VALUES ('Note from Alexa', 'This note was created magically')";
+		  con.query(sql, function (err, result) {
+			if (err) throw err;
+			console.log("1 record inserted");
+		  });
+		});	
+
 
 // THIS FUNCTION RUNS WHEN THE SKILL IS INVOKED
 app.launch( function( request, response ) {
@@ -54,14 +65,6 @@ app.intent('noteTake',
 	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");
-
-		//Insert a record in the table:
-		var sql = "INSERT INTO t_minutes (f_title, f_note) VALUES ('Note from Alexa', 'This note was created magically')";
-		connection.query(sql, function (err, result) {
-			if (err) throw err;
-			console.log("1 record inserted");
-		});		
-
 	}
 	else
 	{
