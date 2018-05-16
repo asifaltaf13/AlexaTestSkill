@@ -5,6 +5,14 @@ var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'test-skill' );
 var mysql = require('mysql');
 
+var connection = mysql.createConnection({
+  host     : 'asifaltaf.mysql.pythonanywhere-services.com',
+  user     : 'asifaltaf',
+  password : 'bismillah',
+  database : 'asifaltaf$minutetaker'
+});
+connection.connect();
+
 // THIS FUNCTION RUNS WHEN THE SKILL IS INVOKED
 app.launch( function( request, response ) {
 	response.say( 'Ready to take notes' );	// initial response from alexa
