@@ -11,7 +11,7 @@ var con = mysql.createConnection({
   host: "asifaltaf.mysql.pythonanywhere-services.com",
   user: "asifaltaf",
   password: "bismillah"
-  database: "minutetaker"
+  database: "asifaltaf$minutetaker"
 });	
 
 
@@ -56,14 +56,14 @@ app.intent('noteTake',
     var note = request.slot('note');
 	if (typeof(note) != "undefined")
 	{
-		//response.say("Your note: " + note + " was created.");	
+		response.say("Your note: " + note + " was created.");	
 		
 		con.connect(function(err) 
 		{
 		  if (err)
 		  {
-			  //throw err;			  
 			  response.say("error in connection");			  
+			  throw err;			  
 		  }
 		  else
 		  {
@@ -73,7 +73,8 @@ app.intent('noteTake',
 		  console.log("Connected!");
 		  //Insert a record in the table:
 		  var sql = "INSERT INTO t_minutes (f_title, f_note) VALUES ('Note from Alexa', 'This note was created magically')";
-		  con.query(sql, function (err, result) {
+		  con.query(sql, function (err, result) 
+		  {
 			if (err) throw err;
 			console.log("1 record inserted");
 		  });
