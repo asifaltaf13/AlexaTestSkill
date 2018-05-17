@@ -11,7 +11,8 @@ var connection = mysql.createConnection({
   password : 'bismillah',
   database : 'asifaltaf$minutetaker'
 });
-connection.connect(function(err) 
+
+/* connection.connect(function(err) 
 		{
 		  if (err) throw err;
 		  console.log("Connected!");
@@ -21,7 +22,7 @@ connection.connect(function(err)
 			if (err) throw err;
 			console.log("1 record inserted");
 		  });
-		});	
+		});	 */
 
 
 // THIS FUNCTION RUNS WHEN THE SKILL IS INVOKED
@@ -65,18 +66,16 @@ app.intent('noteTake',
 	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");
+		
+		// todo: connect to database and send entry	
+		// establish a connection with the remote database server
+		// run a query to insert the row
+		// (optional) inform the user that 'Success'
 	}
 	else
 	{
 		response.say("Pardon me. I could not hear a note.");
 	}
-	
-	// todo: connect to database and send entry
-	
-	// establish a connection with the remote database server
-	// run a query to insert the row
-	// (optional) inform the user that 'Success'
-	
   }
 );
 
