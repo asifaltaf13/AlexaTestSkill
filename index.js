@@ -1,28 +1,15 @@
 module.change_code = 1;
 'use strict';
 
+# dependencies
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'test-skill' );
-var mysql = require('mysql');
+const opn = require('opn');
 
-var connection = mysql.createConnection({
-  host     : 'asifaltaf.mysql.pythonanywhere-services.com',
-  user     : 'asifaltaf',
-  password : 'bismillah',
-  database : 'asifaltaf$minutetaker'
-});
 
-/* connection.connect(function(err) 
-		{
-		  if (err) throw err;
-		  console.log("Connected!");
-		  //Insert a record in the table:
-		  var sql = "INSERT INTO t_minutes (f_title, f_note) VALUES ('Note from Alexa', 'This note was created magically')";
-		  con.query(sql, function (err, result) {
-			if (err) throw err;
-			console.log("1 record inserted");
-		  });
-		});	 */
+
+
+
 
 
 // THIS FUNCTION RUNS WHEN THE SKILL IS INVOKED
@@ -66,11 +53,8 @@ app.intent('noteTake',
 	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");
-		
-		// todo: connect to database and send entry	
-		// establish a connection with the remote database server
-		// run a query to insert the row
-		// (optional) inform the user that 'Success'
+		var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/remote_insert.html?title='+ note +'&note='+ note
+		opn(urlString);
 	}
 	else
 	{
