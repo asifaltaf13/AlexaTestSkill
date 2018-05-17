@@ -54,7 +54,9 @@ app.intent('noteTake',
 	{
 		response.say("Your note: " + note + " was created.");
 		var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/remote_insert.html/'+note+'/'+note
-		opn(urlString);
+		//opn(urlString);
+		
+		request.get(urlString)
 		
 		// POST request to web2py
 	}
