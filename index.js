@@ -1,7 +1,7 @@
 module.change_code = 1;
 'use strict';
 
-# dependencies
+// dependencies
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'test-skill' );
 const opn = require('opn');
