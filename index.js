@@ -53,10 +53,8 @@ app.intent('noteTake',
 	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");
-		var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/remote_insert.html/'+note+'/'+note
-		//opn(urlString);
-		
-		// POST request to web2py
+		var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/call/run/remote_insert/'+note+'/'+note
+		opn(urlString);
 	}
 	else
 	{
