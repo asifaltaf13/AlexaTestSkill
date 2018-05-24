@@ -4,10 +4,6 @@ module.change_code = 1;
 // dependencies
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'test-skill' );
-const opn = require('opn');
-
-
-
 
 
 
@@ -53,8 +49,23 @@ app.intent('noteTake',
 	if (typeof(note) != "undefined")
 	{
 		response.say("Your note: " + note + " was created.");
-		var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/call/run/remote_insert/'+note+'/'+note
-		opn(urlString);
+		//var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/call/run/remote_insert/'+note+'/'+note
+		//opn(urlString);
+		
+		var request = require('request');
+		
+		var note = "CodeFromConstantine";
+		var urlString = 'https://minutetaker.pythonanywhere.com/Minute_Taker/default/call/run/remote_insert/'+note+'/'+note;
+		request.get(urlString, function (error, response, body) {
+		if (!error && response.statusCode == 200) 
+		{
+			//var csv = body;
+			// Continue with your processing here.
+			//console.log(body);
+		}
+		});
+		//res.render('pages/index')
+		
 	}
 	else
 	{
